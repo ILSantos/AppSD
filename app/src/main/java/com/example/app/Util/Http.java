@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Http {
-    public static final String COUNTRIES_URL_JSON = "https://restcountries.eu/rest/v1/all";
+    public static final String COUNTRIES_URL_JSON = "https://restcountries.eu/rest/v1/all/";
 
     private static HttpURLConnection connectar (String urlArquivo) throws IOException {
         final int SEGUNDOS = 1000;
