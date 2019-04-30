@@ -55,7 +55,6 @@ public class Http {
         for (int j = 0; j < jsonArray.length(); j++) {
             JSONObject unidade = jsonArray.getJSONObject(j);
             Countries countries = new Countries(
-                    unidade.getLong("id"),
                     unidade.getString("name"),
                     unidade.getString("alpha3Code"),
                     unidade.getString("capital")

@@ -6,8 +6,6 @@ import java.io.Serializable;
 
 public class Countries implements Serializable {
 
-//    @SerializedName("id")
-//    public long id;
 
     @SerializedName("name")
     public String name;
@@ -19,8 +17,7 @@ public class Countries implements Serializable {
     public String capital;
 
 
-    public  Countries (long id, String name, String alpha3Code, String capital) {
-//        this.id = id;
+    public  Countries (String name, String alpha3Code, String capital) {
         this.name = name;
         this.alpha3Code = alpha3Code;
         this.capital = capital;
@@ -35,9 +32,6 @@ public class Countries implements Serializable {
                 '}';
     }
 
-//    public long getId() {
-//        return id;
-//    }
 
     public String getNome() {
         return name;
@@ -50,6 +44,5 @@ public class Countries implements Serializable {
     public String getCapital() {
         return capital;
     }
-
 
 }

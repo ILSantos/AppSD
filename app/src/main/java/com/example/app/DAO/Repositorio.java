@@ -54,7 +54,7 @@ public class Repositorio {
             String sigla = cursor.getString(cursor.getColumnIndex(SQLHelper.COLUNA_SIGLA));
             String capital = cursor.getString(cursor.getColumnIndex(SQLHelper.COLUNA_CAPITAL));
 
-            Countries countries = new Countries(id, nome, sigla, capital);
+            Countries countries = new Countries(nome, sigla, capital);
             list.add(countries);
         }
         cursor.close();

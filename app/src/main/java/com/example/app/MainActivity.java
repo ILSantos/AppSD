@@ -1,9 +1,13 @@
 package com.example.app;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     private SwipeRefreshLayout swipeRefresh;
     Repositorio db;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,24 +68,24 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         });
     }
 
-    private void getData() {
-        String[] nomes = {"BRASIL", "ESTADOS UNIDOS", "FRANÇA", "ARGENTINA"};
-        String[] capital= {"Brasilia", "Washington DC.", "Paris", "Buenos Aires"};
-
-        countriesList.clear();
-        for (int i = 0; i < 20; i++) {
-            int nextInt = new Random().nextInt(4);
-            Countries countries = new Countries(i, nomes[nextInt], "", capital[nextInt]);
-            countriesList.add(countries);
-        }
-        adapter.notifyDataSetChanged();
-    }
+//    private void getData() {
+//        String[] nomes = {"BRASIL", "ESTADOS UNIDOS", "FRANÇA", "ARGENTINA"};
+//        String[] capital= {"Brasilia", "Washington DC.", "Paris", "Buenos Aires"};
+//
+//        countriesList.clear();
+//        for (int i = 0; i < 20; i++) {
+//            int nextInt = new Random().nextInt(4);
+//            Countries countries = new Countries(nomes[nextInt], "", capital[nextInt]);
+//            countriesList.add(countries);
+//        }
+//        adapter.notifyDataSetChanged();
+//    }
 
     // chama AsyncTask para requisicao dos countries
-    public void getDataHttp() {
-        CountriesTask mTask = new CountriesTask();
-        mTask.execute();
-    }
+//    public void getDataHttp() {
+//        CountriesTask mTask = new CountriesTask();
+//        mTask.execute();
+//    }
 
     @Override
     public void onRefresh() {
@@ -168,6 +174,19 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         return false;
     }
 
-}
+    void permissao(){
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
 
+            } else {
+
+                ActivityCompat.requestPermissions(MainActivity.this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+            }
+        }
+    }
+}
 
