@@ -22,16 +22,15 @@ public class Repositorio {
     public long inserir (Countries countries) {
         db = helper.getReadableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(SQLHelper.COLUNA_NOME, countries.nome);
-        cv.put(SQLHelper.COLUNA_SIGLA, countries.sigla);
+        cv.put(SQLHelper.COLUNA_NOME, countries.name);
+        cv.put(SQLHelper.COLUNA_SIGLA, countries.alpha3Code);
         cv.put(SQLHelper.COLUNA_CAPITAL, countries.capital);
-        cv.put(SQLHelper.COLUNA_IDIOMA, countries.idioma);
 
         long id = db.insert(SQLHelper.TABELA_COUNTRIES, null, cv);
 
-        if (id != -1) {
-            countries.id = id;
-        }
+//        if (id != -1) {
+//            countries.id = id;
+//        }
 
         db.close();
         return id;
@@ -54,9 +53,8 @@ public class Repositorio {
             String nome = cursor.getString(cursor.getColumnIndex(SQLHelper.COLUNA_NOME));
             String sigla = cursor.getString(cursor.getColumnIndex(SQLHelper.COLUNA_SIGLA));
             String capital = cursor.getString(cursor.getColumnIndex(SQLHelper.COLUNA_CAPITAL));
-            String idioma = cursor.getString(cursor.getColumnIndex(SQLHelper.COLUNA_IDIOMA));
 
-            Countries countries = new Countries(id, nome, sigla, capital, idioma);
+            Countries countries = new Countries(id, nome, sigla, capital);
             list.add(countries);
         }
         cursor.close();

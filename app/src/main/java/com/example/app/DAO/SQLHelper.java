@@ -13,7 +13,7 @@ public class SQLHelper extends SQLiteOpenHelper {
     public static final String COLUNA_NOME= "nome";
     public static final String COLUNA_SIGLA = "sigla";
     public static final String COLUNA_CAPITAL = "capital";
-    public static final String COLUNA_IDIOMA = "idioma";
+
 
     public SQLHelper(Context context) {
         super(context, NOME_BANCO, null, VERSAO_BANCO);
@@ -25,8 +25,7 @@ public class SQLHelper extends SQLiteOpenHelper {
                         COLUNA_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
                         COLUNA_NOME + " TEXT, " +
                         COLUNA_SIGLA + " TEXT, " +
-                        COLUNA_CAPITAL + " TEXT, " +
-                        COLUNA_IDIOMA + "TEXT)"
+                        COLUNA_CAPITAL + " TEXT) "
         );
     }
 

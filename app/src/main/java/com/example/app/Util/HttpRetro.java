@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 
 public class HttpRetro {
-    private static final String BASE_URL = "https://restcountries.eu/rest/v1/all/";
+    private static final String BASE_URL = "https://restcountries.eu";
 
     // Inicializa Retrofit
     public static CountriesInterface getCountriesClient() {
@@ -24,7 +24,7 @@ public class HttpRetro {
 
     // Interface com metodos de requisicao
     public interface CountriesInterface {
-        @GET("v2/all")
+        @GET("/rest/v1/all/")
         Call<List<Countries>> getCountries();
     }
 

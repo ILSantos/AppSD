@@ -27,10 +27,16 @@ public class Adapter extends ArrayAdapter<Countries> {
         }
 
         TextView textViewNome = (TextView) convertView.findViewById(R.id.nome);
+        TextView textViewSigla = (TextView) convertView.findViewById(R.id.sigla);
         TextView textViewCapital = (TextView) convertView.findViewById(R.id.capital);
 
-        textViewNome.setText(countries.nome);
-        textViewCapital.setText(countries.sigla);
+
+
+        textViewNome.setText(countries.name);
+        textViewSigla.setText(countries.alpha3Code);
+        textViewCapital.setText(countries.capital);
+
+
 
         return convertView;
     }

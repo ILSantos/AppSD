@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         countriesList = new ArrayList<Countries>();
 
         db = new Repositorio(getBaseContext());
-
+        adapter = new Adapter(this, countriesList);
         getDataRetro();
 
         listView.setAdapter(adapter);
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         countriesList.clear();
         for (int i = 0; i < 20; i++) {
             int nextInt = new Random().nextInt(4);
-            Countries countries = new Countries(i, nomes[nextInt], "", capital[nextInt], "");
+            Countries countries = new Countries(i, nomes[nextInt], "", capital[nextInt]);
             countriesList.add(countries);
         }
         adapter.notifyDataSetChanged();
@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                         db.excluirAll();
 
                         for (Countries countries : countriesBody) {
+                            System.out.println(countriesBody);
                             countriesList.add(countries);
                             db.inserir(countries);
                         }
