@@ -68,24 +68,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         });
     }
 
-//    private void getData() {
-//        String[] nomes = {"BRASIL", "ESTADOS UNIDOS", "FRANÇA", "ARGENTINA"};
-//        String[] capital= {"Brasilia", "Washington DC.", "Paris", "Buenos Aires"};
-//
-//        countriesList.clear();
-//        for (int i = 0; i < 20; i++) {
-//            int nextInt = new Random().nextInt(4);
-//            Countries countries = new Countries(nomes[nextInt], "", capital[nextInt]);
-//            countriesList.add(countries);
-//        }
-//        adapter.notifyDataSetChanged();
-//    }
 
-    // chama AsyncTask para requisicao dos countries
-//    public void getDataHttp() {
-//        CountriesTask mTask = new CountriesTask();
-//        mTask.execute();
-//    }
 
     @Override
     public void onRefresh() {
@@ -121,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         swipeRefresh.setRefreshing(true);
 
-        // se tiver conexao faz get, senao pega do sqlite
         if (isConnected()) {
             HttpRetro.getCountriesClient().getCountries().enqueue(new Callback<List<Countries>>() {
                 @Override
@@ -174,19 +156,5 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         return false;
     }
 
-    void permissao(){
-        if (ContextCompat.checkSelfPermission(MainActivity.this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)) {
-
-            } else {
-
-                ActivityCompat.requestPermissions(MainActivity.this,
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
-            }
-        }
-    }
 }
 
