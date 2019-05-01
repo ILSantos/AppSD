@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
         // seta cores
         swipeRefresh.setColorScheme(R.color.colorPrimary, R.color.colorAccent);
